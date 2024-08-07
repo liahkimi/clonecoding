@@ -12,6 +12,7 @@ header{
 .header--ad-container{
   display: flex;
   justify-content: center;
+  background-color: ;
 }
 .header--ad{
   background-color: transparent;
