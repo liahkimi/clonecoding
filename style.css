@@ -2,8 +2,6 @@
   margin : 0;
   padding : 0;
 }
-
-
 header{
   width: 100%;
  height: 241px;
@@ -12,7 +10,7 @@ header{
 .header--ad-container{
   display: flex;
   justify-content: center;
-  background-color: ;
+  background-color: #C4E3FF;
 }
 .header--ad{
   background-color: transparent;
@@ -22,6 +20,10 @@ header{
   text-align: center;
 }
 /* 헤더2 > 로고 & 유저네비바 */
+.header--main-container{
+  width: 980px;
+  margin : 0 auto;
+}
 .header--main{
   width: 980px;
   height: 56px;
@@ -29,16 +31,18 @@ header{
   justify-content: space-between;
   line-height: 56px;
   padding: 30px 6px 25px 5px;
-  border-bottom: 1px solid rgba(188, 188, 188, 0.411);
+  /* border-bottom: 1px solid rgba(188, 188, 188, 0.411); */
 }
 /* cgv로고 */
 .header--main-logo{
   width: 319px;
 }
+.header--main-logo a{
+  text-decoration: none;
+}
 .header--main-logo a img{
   width: auto;
   height: 56px;
-  text-decoration: none;
 }
 .header--main-slogan{
   font-weight: 300;
@@ -89,15 +93,24 @@ header{
 }
 
 /* 헤더3 > 카테네비바&검색창 */
-.header--nav{
+.header--nav-container{
+  position: absolute;
+  left: 0;
+  top: 200px;
   width: 100%;
-  height: 40px;
   padding: 5px 0;
+  background-color: #fff;
+}
+.header--nav{
+  width: 980px;
+  margin: 0 auto;
+  height: 50px; 
   background-color: #fff;
   display: flex;
   align-items: center;
-  position: relative;
-  border-bottom: 2px solid red;
+  /* position: relative; */
+  border-top : 1px solid rgba(188, 188, 188, 0.411);
+  border-bottom: 3px solid red;
 }
 /* .nav_menu 드롭다운 메뉴 전체 */
 .header--nav-cate ul{
@@ -116,6 +129,9 @@ header{
 /* 네비바 버튼 */
 .dropdown-menu{
   color: #222222;
+  width: 68px;
+  display: flex;
+  justify-content: space-between;
   padding: 14px;
   font-size: 16px;
   cursor: pointer;
@@ -129,7 +145,7 @@ header{
   display: block;
   position: absolute;
   background-color: ghostwhite;
-  width: 1000px;
+  width: 100%;
   height: 400px;
   /* border: 1px solid black; */
   /* 투명하게 했다가 hover시 보이게 하는 설정 */
@@ -137,6 +153,7 @@ header{
   opacity: 0;/*투명하게 설정*/
   /* visibility: hidden;화면에서 숨김 */
   transition: opacity 0.5s ease-in, visibility 0.5s ease-in;
+  z-index: 1000;
 }
 
 .dropdown-content .title{
@@ -168,6 +185,7 @@ header{
   visibility: visible;/*화면에 표시함*/
   margin-bottom: 8px; 
   padding: 25px 0 0 25px;
+  border-top: 2px solid red;
 }
 /* 검색창은 호버해도 드롭다운메뉴가 안나오게 */
 .header--nav-search:hover .dropdown-content{
@@ -238,12 +256,12 @@ section{
 
 /* 광고 영상 */
 .movieSelection-wrap{
-  position: relative;
+  /* position: relative; */
   height: 498px;
-  background-color: #000;
 }
 .movieSelection-wrap .movieSelection-wrap--content{
-  width: 980px;
+  position: relative;
+  width: 100%;
   height: 100%;
   margin: 0 auto;
 }
@@ -253,24 +271,33 @@ section{
   width: 100%;
   height: 100%;
   object-fit: contain;
+  position: absolute;
+  top : 10px;
 }
+
 .movieSelection-wrap .movieSelection-wrap--content .movieSelection-wrap--content--video-wrap img{
-  position: relative;
-    width: 100%;
-    height: 100%;
-    /* transform: scale(1.35); */
-    /* z-index: 1; */
+  position: absolute;
+  top: 6px;
+  width: 100%;
+  height: 100%;
+  /* transform: scale(1.35);
+  z-index: 1; */
 }
 
 
 
 /* 무비차트 */
 .chart{
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(247, 247, 247));
+  
+}
+.chart-wrapper{
   height: 351px;
   padding: 50px 0 60px;/*양쪽30px*/
   width: 980px;
   margin: 0 auto;
-  background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(247, 247, 247));/*그라데이션 배경*/
 }
 /* 슬라이드부분 감추는곳 수정 요망 */
 /* .chart::before{
@@ -461,9 +488,6 @@ section{
   width: 35px;
   height: 7px
 }
-
-
-
 .chart--swiper-slider .movie-info-wrap{
   display: flex;
   flex-wrap: wrap;
@@ -508,10 +532,10 @@ section{
   text-decoration: none;
 }
 .chart--swiper-slider .img-wrap:hover .chart--btn-wrap a ~ a{
-  margin-top: 6px
+  margin-top: 6px;
 }
 .chart--swiper-slider .img-wrap:hover .chart--btn-wrap a:hover{
-  opacity: 0.8  
+  opacity: 0.8 ;
 }
 .chart--swiper-slider .img-wrap:hover .chart--btn-wrap .detail-btn{
   color: #666;
@@ -557,8 +581,14 @@ section{
 /* 이벤트 섹션 */
 .event{
   height: 328px;
-  padding: 60px 0 6px;
+  padding-top: 60px;
+  padding-bottom: 6px;
   background-color: #ffff;
+}
+.event-wrapper{
+  width: 980px;
+  height: 100%;
+  margin: 0 auto;
 }
 .event--article-container{
   display: flex;
@@ -614,6 +644,11 @@ section{
   height: 316px;
   padding: 60px  0 21px;
 }
+.theater-type-wrapper{
+  width: 980px;
+  height: 100%;
+  margin: 0 auto;
+}
 .theater-type h3{
   height: auto;
   margin : 0;
@@ -626,8 +661,8 @@ section{
 /* 특별관 img & text 묶음 */
 .theater-type--article-container{
   display: flex;
-  justify-content: space-between;
   margin-top: 19px;
+  justify-content: space-between;
 }
 /* img 래퍼 */
 .theater-type--img{
@@ -1013,24 +1048,36 @@ section{
 }
 
 
-
+/* 여백 */
+.blank{
+  width: 100%;
+  height: 240px;
+  margin-right: 0px;
+  margin-left: 0px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  background-color: #f8f8f8;
+}
 
 
 
 
 /* 푸터 */
 footer{
-  min-width: 1040px;
+  min-width: 100%;
   padding: 0 0 14px;
   background-color: #f8f8f8;
   display: block;
+}
+.footer-wrapper{
+  width: 980px;
+  height: 100%;
+  margin: 0 auto;
 }
 footer .policy-list{
   display: flex;
   list-style:none;
   justify-content: space-between;
-  max-width: 980px;
-  margin: 0 auto;
   padding: 23px 0;
   border-bottom: 1px solid #ebebeb;/*실선*/
 }
@@ -1042,9 +1089,11 @@ footer .policy-list li a{
   line-height: 1.462em;
 }
 footer .company-info-wrap{
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+    display: flex;
+    align-items: flex-end;
+    max-width: 980px;
+    padding: 23px 0;
+    justify-content: space-between;
 }
 /* 한꺼번에 font 설정 */
 footer .company-info-wrap .company-info{
