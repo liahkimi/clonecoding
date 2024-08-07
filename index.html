@@ -7,12 +7,13 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body >
-  <div class="container">
     <!-- 헤더(3) -->
     <header>
       <!-- 헤더1 > 광고배너 -->
-      <div class="header--ad">
-        <img src="./img/adbanner.jpg" alt="영화_10라이브즈_광고배너">
+      <div class="header--ad-container">
+        <div class="header--ad">
+          <img src="./img/adbanner.jpg" alt="영화_10라이브즈_광고배너">
+        </div>
       </div>
       <!-- 헤더2 > 로고 & 유저네비바 -->
       <div class="header--main">
@@ -81,7 +82,7 @@
               </div>
             </li>
             <li class="dropdown">
-              <div class="dropdown-menu">예매</div>
+              <div class="dropdown-menu" id="red">예매</div>
               <div class="dropdown-content">
                 <a href="#" class="title">예매</a>
                 <a href="#">빠른예매</a>
@@ -153,7 +154,7 @@
         </div>
       <!-- 무비차트 -->
       <section class="chart" >
-        <h3 class="chart--text-box">무비차트|상영예정작</h3>
+        <h3 class="chart--text-box">무비차트<span> | 상영예정작</span></h3>
         <div class="chart--article-container">
           <!-- 슬라이드 전체 -->
           <div class="chart--swiper-wrapper">
@@ -630,6 +631,5 @@
         </section>
       </article>
     </footer>
-  </div>
 </body>
 </html>

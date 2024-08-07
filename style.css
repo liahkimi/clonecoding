@@ -2,10 +2,6 @@
   margin : 0;
   padding : 0;
 }
-.container{
-  max-width: 980px;
-  margin : 0 auto;
-}
 
 
 header{
@@ -13,6 +9,10 @@ header{
  height: 241px;
 }
 /* 헤더1 > 광고배너 */
+.header--ad-container{
+  display: flex;
+  justify-content: center;
+}
 .header--ad{
   background-color: transparent;
   width: 980px;
@@ -37,6 +37,7 @@ header{
 .header--main-logo a img{
   width: auto;
   height: 56px;
+  text-decoration: none;
 }
 .header--main-slogan{
   font-weight: 300;
@@ -118,20 +119,25 @@ header{
   font-size: 16px;
   cursor: pointer;
 }
+#red{
+  color: red;
+}
 /* 드롭다운메뉴 크기 조정해야함!!! */
 .dropdown-content{
   /* display: none; */
+  display: block;
   position: absolute;
   background-color: ghostwhite;
   width: 1000px;
   height: 400px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   /* 투명하게 했다가 hover시 보이게 하는 설정 */
   /* display: block으로 보이게 할 경우 transition만으로는 적용 안됨 */
   opacity: 0;/*투명하게 설정*/
-  visibility: hidden;/*화면에서 숨김*/
+  /* visibility: hidden;화면에서 숨김 */
   transition: opacity 0.5s ease-in, visibility 0.5s ease-in;
 }
+
 .dropdown-content .title{
   font-weight: 700;
   font-size: 14px;
@@ -195,7 +201,7 @@ header{
 input{
   background-color: none;
   border:none;
-  width: 187px;
+  width: 160px;
   height: 24px;
 }
 .header--nav-search input{
@@ -260,7 +266,7 @@ section{
 /* 무비차트 */
 .chart{
   height: 351px;
-  padding: 0 0 60px;/*양쪽30px*/
+  padding: 50px 0 60px;/*양쪽30px*/
   width: 980px;
   margin: 0 auto;
   background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(247, 247, 247));/*그라데이션 배경*/
@@ -289,10 +295,16 @@ section{
   z-index: 2;
 } */
 .chart--text-box, .event--text-box,.theater-type--text-box {
-  width: 247px;
+  width: 300px;
   height: 36px;
   font-size: 26px;
   margin: 0px 0px 20px;
+}
+.chart--text-box>span{
+  font-weight: 400;
+  font-size: 26px;
+  color: #666;
+  line-height: 1.423em;
 }
 .chart--article-container{
   display: flex;
@@ -336,14 +348,14 @@ section{
   z-index: 2
 }
 .chart--swiper-slider{
-  counter-reset: movie-chart-counter
+  counter-reset: movie-chart-counter;
 }
 .chart--swiper-slider .img-wrap::after{
-  content: counter(movie-chart-counter);
   counter-increment: movie-chart-counter;
+  content: counter(movie-chart-counter);
   position: absolute;
   left: 9px;
-  bottom: -4px;
+  bottom: -2px;
   font-weight: 400;
   font-size: 50px;
   font-style: italic;
@@ -630,8 +642,8 @@ section{
   object-fit: contain;
 }
 /* 텍스트 래퍼 */
-.theater-type--text-container{
-
+.theater-type--text-container ul{
+  border-bottom: 1px solid #e9e9e9;
 }
 .theater-type--text-container ul li{
   border-radius: 10px;
@@ -641,7 +653,6 @@ section{
   list-style: none;
   display: flex;
   align-items: center;
-  border: 1px solid transparent;
   border-top: 1px solid #e9e9e9;
   transition: border 0.3s ease;
 }
@@ -676,8 +687,8 @@ section{
 /* 이거 js로 해당 부분일때 border-top과bottom 다 신경써줘야 할듯..일단 pass */
 .theater-type--text-container ul li:hover {
   border: 1px solid black;
-  border-top: 1px solid black !important;
-  border-bottom: 1px solid black !important;
+  /* border-top: 1px solid black !important;
+  border-bottom: 1px solid black !important; */
 }
 /* Hover 상태에서 <strong>와 <span>의 border를 숨기기 */
 .theater-type--text-container ul li:hover a strong,
