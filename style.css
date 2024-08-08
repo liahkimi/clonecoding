@@ -60,6 +60,9 @@ header{
 .header--main-ad{
   width: 136px;
 }
+.header--main-ad a{
+  text-decoration: none;
+}
 .header--main-ad img{
   display: flex;
   align-items: center;
@@ -93,16 +96,21 @@ header{
 }
 
 /* 헤더3 > 카테네비바&검색창 */
+/* 전체를 채우는 것 ........ */
+.header--nav-total-container{
+
+}
 .header--nav-container{
   position: absolute;
   left: 0;
   top: 200px;
   width: 100%;
-  padding: 5px 0;
+  padding: 5px 0 0;
   background-color: #fff;
+  z-index: 10000;
 }
 .header--nav{
-  width: 980px;
+  width: 100%;
   margin: 0 auto;
   height: 50px; 
   background-color: #fff;
@@ -113,16 +121,18 @@ header{
   border-bottom: 3px solid red;
 }
 /* .nav_menu 드롭다운 메뉴 전체 */
-.header--nav-cate ul{
+.header--nav-cate .nav-menu{
   width: 100%;
   display: flex;
   list-style: none;
   margin: 0;
   padding: 0;
 }
-.header--nav-cate li{
+/* li */
+.header--nav-cate .nav-menu .dropdown{
   margin : 0 10px;
 }
+
 .dropdown{
   position: relative;
 }
@@ -152,7 +162,7 @@ header{
   /* display: block으로 보이게 할 경우 transition만으로는 적용 안됨 */
   opacity: 0;/*투명하게 설정*/
   /* visibility: hidden;화면에서 숨김 */
-  transition: opacity 0.5s ease-in, visibility 0.5s ease-in;
+  /* transition: opacity 0.1s ease-in, visibility 0.1s ease-in; */
   z-index: 1000;
 }
 
@@ -173,7 +183,7 @@ header{
   display: block;
 }
 .header--nav{
-  z-index: 10000;
+  z-index: 1000;
   width: 100%;
 }
 .header--nav-cate{
@@ -185,7 +195,7 @@ header{
   visibility: visible;/*화면에 표시함*/
   margin-bottom: 8px; 
   padding: 25px 0 0 25px;
-  border-top: 2px solid red;
+  border-top: 3px solid red;
 }
 /* 검색창은 호버해도 드롭다운메뉴가 안나오게 */
 .header--nav-search:hover .dropdown-content{
@@ -258,10 +268,13 @@ section{
 .movieSelection-wrap{
   /* position: relative; */
   height: 498px;
+  /* overflow: hidden; */
+  background-color: black;
 }
 .movieSelection-wrap .movieSelection-wrap--content{
+  /* overflow: hidden; */
   position: relative;
-  width: 100%;
+  width: 980px;
   height: 100%;
   margin: 0 auto;
 }
@@ -270,20 +283,97 @@ section{
   position: relative;
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  position: absolute;
-  top : 10px;
+  /* object-fit: contain; */
+  /* top : 10px; */
 }
-
-.movieSelection-wrap .movieSelection-wrap--content .movieSelection-wrap--content--video-wrap img{
+.movieSelection-wrap .movieSelection-wrap--content .movieSelection-wrap--content--video-wrap::before{
+  content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-image: linear-gradient(to right, #000 0%, rgba(0, 0, 0, 0.25) 25%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.25) 75%, #000 100%);
+    z-index: 2;
+}
+/* 비디오 영상 */
+.movieSelection-wrap .movieSelection-wrap--content .movieSelection-wrap--content--video-wrap video{
   position: absolute;
-  top: 6px;
+  top: 7px;
   width: 100%;
-  height: 100%;
-  /* transform: scale(1.35);
-  z-index: 1; */
+  /* height: 700px; */
+  object-fit: cover;
+  /* transform: scale(1.05); */
+} 
+/* 비디오 제목 (10 라이브즈) */
+.movieSelection-title{
+  position: absolute;
+  top: 170px;
+  left: 0;
+  font-weight: 700;
+  font-size: 40px;
+  color: #fff;
+  line-height: 1.450em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.72);
+  z-index: 2;
+  pointer-events: none;
 }
-
+/*   엉뚱한 동물로 또 다시 태어난다고?!.... */
+.movieSelection-text{
+  display: -webkit-box;
+  overflow: hidden;
+  position: absolute;
+  top: 239px;
+  left: 0;
+  max-width: 100%;
+  font-size: 20px;
+  color: #fff;
+  line-height: 1.450em;
+  text-overflow: ellipsis;/*말줄임 처리..*/
+  z-index: 3;
+  pointer-events: none;
+}
+.movieSelection-videoController-wrap{
+  display: inline-flex;
+  /* inline-flex : inline처럼 배치하면서 내부 자식 요소를 플렉스 박스를 이용해 정렬 가능. */
+  position: absolute;
+  top: 315px;
+  left: 3px;
+  z-index: 4;
+}
+/* 상세보기 버튼 */
+.movieSelection-videoController-wrap .movieSelection-detail-Btn{
+  display: block;
+  padding: 5px 30px 5px 18px;
+  font-size: 14px;
+  color: #343434;
+  line-height: 1.429em;
+  background: rgba(255, 255, 255, 0.8) url(https://img.cgv.co.kr/R2014/images/common/ico/arrowR_8x13.png) calc(100% - 11px) center / 8px 13px scroll no-repeat;
+  border-radius: 15px;
+  text-decoration: none;
+}
+/* 재생 버튼 */
+.movieSelection-playStop-Btn{
+  display: block;
+  margin-left: 10px;
+  width: 28px;
+  height: 28px;
+  font-size: 0;
+  background: transparent url(https://img.cgv.co.kr/R2014/images/main/ico/play.png) center / 18px scroll no-repeat;
+  border: 1px solid #979797;
+  border-radius: 50%;
+}
+/* 무음모드 버튼 */
+.movieSelection-soundOnOff-Btn{
+  display: block;
+  margin-left: 10px;
+  width: 28px;
+  height: 28px;
+  font-size: 0;
+  background: transparent url(https://img.cgv.co.kr/R2014/images/main/ico/soundOff.png) center / 18px scroll no-repeat;
+  border: 1px solid #979797;
+  border-radius: 50%;
+}
 
 
 /* 무비차트 */
@@ -299,29 +389,7 @@ section{
   width: 980px;
   margin: 0 auto;
 }
-/* 슬라이드부분 감추는곳 수정 요망 */
-/* .chart::before{
-  content: '';
-  display: block;
-  width: calc(50% - 520px);
-  height: 100%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(247, 247, 247));
-  z-index: 3;
-}
-.chart::after{
-  content: '';
-  display: block;
-  width: calc(50% - 520px);
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: linear-gradient(to bottom, rgb(255, 255, 255), rgb(247, 247, 247));
-  z-index: 2;
-} */
+/* 섹션별 타이틀 크기 통일 */
 .chart--text-box, .event--text-box,.theater-type--text-box {
   width: 300px;
   height: 36px;
@@ -333,6 +401,23 @@ section{
   font-size: 26px;
   color: #666;
   line-height: 1.423em;
+}
+.chart-wrapper .chart-btn-container .chart-btn-wrap{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.chart-wrapper .chart-btn-container .chart-btn-wrap .btn-allview{
+  padding: 4px 32px 4px 15px;
+  font-size: 14px;
+  color: #222;
+  line-height: 1.429em;
+  background: transparent url(https://img.cgv.co.kr/R2014/images/common/ico/arrowR_8x13.png) calc(100% - 7px) center / 8px 13px scroll no-repeat;
+  border: 1px solid #e2e2e2;
+  border-radius: 15px;
+  box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.05);
+  text-decoration: none;
 }
 .chart--article-container{
   display: flex;
@@ -590,14 +675,54 @@ section{
   height: 100%;
   margin: 0 auto;
 }
+.event-wrapper .event-title-wrap{
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+}
+/* 이벤트 정지 버튼 */
+.event-wrapper .event-title-wrap .btn-eventStop{
+  background: transparent url(https://img.cgv.co.kr/R2014/images/common/ico/main/stop.png) center center / 9px 13px scroll no-repeat;
+  display: block;
+  position: absolute;
+  right: 106px;
+  top: 4px;
+  width: 28px;
+  height: 28px;
+  font-size: 0;
+  border: 1px solid #e3e3e3;
+  border-radius: 50%;
+  color: inherit;
+  text-decoration: none;
+}
+/* 이벤트 전체보기 버튼 */
+.event-wrapper .event-title-wrap .btn-allview{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  float: right;
+  margin-top: 4px;
+  padding: 4px 32px 4px 15px;
+  font-size: 14px;
+  color: #222;
+  line-height: 1.429em;
+  background: transparent url(https://img.cgv.co.kr/R2014/images/common/ico/arrowR_8x13.png) calc(100% - 7px) center / 8px 13px scroll no-repeat;
+  border: 1px solid #e2e2e2;
+  border-radius: 15px;
+  box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.05);
+  text-decoration: none;
+}
+
 .event--article-container{
   display: flex;
+  width: 980px;
+  margin: 0 auto;
+  justify-content: space-between;
 }
 /* 이벤트 1묶음 */
 .event--text-article{
   /* flex-shrink: 0; */
   position: relative;
-  margin-right: 20px;
 }
 .event--text-article a{
   text-decoration: none;
