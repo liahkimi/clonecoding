@@ -104,9 +104,6 @@ header{
   z-index: 10000;
 }
 .header--nav-container{
-  /* position: absolute; */
-  /* left: 0;
-  top: 200px; */
   width: 100%;
   padding: 5px 0 0;
   background-color: #fff;
@@ -119,14 +116,23 @@ header{
   background-color: #fff;
   display: flex;
   align-items: center;
-  /* position: relative; */
   border-top : 1px solid rgba(188, 188, 188, 0.411);
   border-bottom: 3px solid red;
 }
+.header--nav .header--nav-cate{
+  width: 1690px;
+}
+
 /* .nav_menu 드롭다운 메뉴 전체 */
+.header--nav-cate .header--nav-menu-wrapper{
+  /* display: flex;
+  justify-items: center; */
+}
+/* ul */
 .header--nav-cate .nav-menu{
   width: 100%;
   display: flex;
+  justify-content: space-evenly;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -134,10 +140,14 @@ header{
 /* li */
 .header--nav-cate .nav-menu .dropdown{
   margin : 0 10px;
+  width: 350px; 
+  /* 떨어지는 메뉴의 각 width(350px x 6개)를 합쳐 1690px되게 만듦*/
+
 }
 
 .dropdown{
   position: relative;
+ 
 }
 /* 네비바 버튼 */
 .dropdown-menu{
@@ -154,18 +164,11 @@ header{
 }
 /* 드롭다운메뉴 크기 조정해야함!!! */
 .dropdown-content{
-  /* display: none; */
-  display: block;
+  display: none;
   position: absolute;
   background-color: ghostwhite;
   width: 100%;
   height: 400px;
-  /* border: 1px solid black; */
-  /* 투명하게 했다가 hover시 보이게 하는 설정 */
-  /* display: block으로 보이게 할 경우 transition만으로는 적용 안됨 */
-  opacity: 0;/*투명하게 설정*/
-  /* visibility: hidden;화면에서 숨김 */
-  /* transition: opacity 0.1s ease-in, visibility 0.1s ease-in; */
   z-index: 1000;
 }
 
@@ -185,6 +188,10 @@ header{
   text-decoration: none;
   display: block;
 }
+/* a태그에 hover하면 밑줄 나오게 */
+.dropdown-content a:hover{
+  text-decoration:underline
+}
 .header--nav{
   z-index: 1000;
   width: 100%;
@@ -193,8 +200,7 @@ header{
   transition: all 2s ease-in;
 }
 .header--nav-cate:hover .dropdown-content{
-  /* display:block; */
-  opacity: 1;/*투명도를 0에서 1로 변경*/
+  display: block;
   visibility: visible;/*화면에 표시함*/
   margin-bottom: 8px; 
   padding: 25px 0 0 25px;
@@ -202,7 +208,6 @@ header{
 }
 /* 검색창은 호버해도 드롭다운메뉴가 안나오게 */
 .header--nav-search:hover .dropdown-content{
-  /* display: none; */
   opacity: 0;
   visibility: hidden;
 }
@@ -210,7 +215,7 @@ header{
   position: absolute;
   display: flex;
   align-items: center;
-  right : 0;
+  right : 0px;
 }
 .header--nav-search::before{
   content: '';
@@ -302,7 +307,7 @@ section{
 /* 비디오 영상 */
 .movieSelection-wrap .movieSelection-wrap--content .movieSelection-wrap--content--video-wrap video{
   position: absolute;
-  top: 7px;
+  top: -11px;
   width: 100%;
   /* height: 700px; */
   object-fit: cover;
@@ -1132,8 +1137,6 @@ section{
   display: flex; 
   justify-content: flex-end;
   position:fixed;
-  /* position: -webkit-sticky;
-  position:sticky; */
   bottom: 80px;
   min-height: 50px;
   margin-left: 440px;
