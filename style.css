@@ -4,7 +4,6 @@
 }
 header{
   width: 100%;
- height: 241px;
 }
 /* 헤더1 > 광고배너 */
 .header--ad-container{
@@ -98,12 +97,16 @@ header{
 /* 헤더3 > 카테네비바&검색창 */
 /* 전체를 채우는 것 ........ */
 .header--nav-total-container{
-
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: white;
+  z-index: 10000;
 }
 .header--nav-container{
-  position: absolute;
-  left: 0;
-  top: 200px;
+  /* position: absolute; */
+  /* left: 0;
+  top: 200px; */
   width: 100%;
   padding: 5px 0 0;
   background-color: #fff;
@@ -1129,6 +1132,8 @@ section{
   display: flex; 
   justify-content: flex-end;
   position:fixed;
+  /* position: -webkit-sticky;
+  position:sticky; */
   bottom: 80px;
   min-height: 50px;
   margin-left: 440px;
